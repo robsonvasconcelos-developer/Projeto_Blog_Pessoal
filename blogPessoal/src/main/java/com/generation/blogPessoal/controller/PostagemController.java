@@ -69,24 +69,34 @@ public ResponseEntity<Postagem> GetById(@PathVariable long id){ //o @PathVariabl
 public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 	return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo)); // na URL na hora de pesquisar no Postman, ele Aceita com letra maiuscula ou minuscula!!!
 }
-
-@PostMapping
+					// END-POINT de Postagem!!
+@PostMapping       //Ponto de Acesso, END-POINT!!
 public ResponseEntity<Postagem> post (@RequestBody Postagem postagem){
 	return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 }
 
-@PutMapping
+@PutMapping          //Anotacao de Atualizacao de DADOS!!
 public ResponseEntity<Postagem> put (@RequestBody Postagem postagem){
 	return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 }
 
+
+				//Deleta o Comentario, DA Tabela chave Primaira ID, Completo!!
 @DeleteMapping("/{id}")
 public void delete(@PathVariable long id) {
 	repository.deleteById(id);
 }	
+
+
 	
 
 
 
 // Link para testar no POSTMAN = http://localhost:8080/postagens -- Para receber um OBJETO JSON no TESTE!!
+
+// a ANOTACAO; @PathVariable serve para Capturar o Valor da URL, tanto do ID ou TITULO.
+
+// O Objeto do OPTIONAL seria: .map(resp -> ResponseEntity.ok(resp))  //// e a LAMBDA Expression seria: (resp -> ResponseEntity.ok(resp)) - com devolucao da RESP de resposta  .OK !!!!
+// se a RESP vier nulo, colocar: .orElse(ResponseEntity.notFound().build());
+
 }

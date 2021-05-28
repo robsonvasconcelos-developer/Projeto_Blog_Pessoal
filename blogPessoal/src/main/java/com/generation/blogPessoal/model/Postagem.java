@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 //import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 /* "Anotacoes" e Parametros que colocamos encima das Classes e das propriedades, que 
@@ -33,7 +35,7 @@ o nome da TABELa "postagem"  */
 public class Postagem {
 	
 	
-	// Atributos do Blog
+							//Anotacao : que Gera o Automaticamente o ID!!!
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY ) // parametro STRATEGY e utilizamos o AUTO Generation TYPE, do tipo .IDENTITY!!
@@ -48,12 +50,14 @@ public class Postagem {
 	@Size(min = 5, max = 100) // "()" aqui dentro foi definido o Parametro de CARACTERES!!
 	private String texto;
 	
-	
+					// Anotacao: Que Gera data Atual Automaticamnete!!!
 	@Temporal(TemporalType.TIMESTAMP)
 	// Foi importado a biblioteca UTIL no "date"
 	private Date date = new java.sql.Date(System.currentTimeMillis());/*
 	Acima depois do "=" foi declarado a funcao para fazer a leitura da dara atual*/
 	
+	
+
 	                  //Inserido TODOS os getters and Setter
 	public long getId() {
 		return id;
@@ -79,6 +83,22 @@ public class Postagem {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	
+	
+	//Adicionando Getters e Setters para TEMA "private Tema tema;"!
+@ManyToOne         ////Criando um RELACIONAMENTO das tabelas Postagem e Tema!!
+@JsonIgnoreProperties("postagem")   // Escrever ate @JsonIg + Crtl + space =- primeira opcao!   /// No parametro dentro de () o que ira IGNORAR dentro de postagem da List ARRAY!! Como string, para nao ter conflito de INFOR!!!
+private Tema tema;      // Explicando: Tema seria a CLASS e em seguida o tema seria o ATRIBUTO!!!
+
+public Tema getTema() {
+	return tema;
+}
+public void setTema(Tema tema) {
+	this.tema = tema;
+} //Conolocar o Mouse encima de "Tema" marcado em Vermelho e criar uma CLASS automaticamente com nome : TEMA!!
+
+	
 	
 	
 	//Pronto!! Classe Crianda!!
