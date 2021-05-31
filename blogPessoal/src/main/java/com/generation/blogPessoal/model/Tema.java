@@ -26,7 +26,7 @@ public class Tema {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  // no Body () importar "Strategy"! depois do = apertar crtl + soace = primeira opcao e segunda!>
 	private long id;     // o @GeneratedValue serve para gerar PK automatico no BD!
 	@NotNull    //Javax
-	private String descriocao;
+	private String descricao;
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL )   //Crinado um RELACIONAMENTO!  //dentro de () colocar parametro: mappedBy com a CLASSE de qual atributo estamos Mapeando: "tema"  da tabela de postagem! e ouitro Atributo chamado CASCADE!
 	//Linha ANTERIOR: o comando: "tema", cascade = CascadeType.ALL  FAZ que se deletar o TEMA, deletara todas as Postagens!!!!
 	@JsonIgnoreProperties("tema")    //Dentro do () apartir de qual PROPRIEDADE sera Ignorado da Tabela Postagem!!   Sera IGNORADO o Atributo "tema" da Tabela POSTAGEM, para nao Duplicar!!
@@ -45,10 +45,10 @@ public class Tema {
 		this.id = id;
 	}
 	public String getDescriocao() {
-		return descriocao;
+		return descricao;
 	}
 	public void setDescriocao(String descriocao) {
-		this.descriocao = descriocao;
+		this.descricao = descriocao;
 	}
 	public List<Postagem> getPostagem() {
 		return postagem;
@@ -60,7 +60,9 @@ public class Tema {
 
 	
 	
+	// ATENCAO: o @JsonIgnoreProperties serve para Nao deixa o codigo em Loop infinito e e nem ter conflitos!!!
 	
+	// No banco de dados, a CHAVE Estrangeira seria TEMA_ID, provavelmente com um auto inclemente!!
 	
 	
 }
