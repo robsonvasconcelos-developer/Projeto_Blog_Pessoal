@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,17 +63,19 @@ public class TemaController {
 
 
 	// Agora Metodo de Anotacao End Point der POST=
-@PostMapping
-public ResponseEntity<Tema> post (@RequestBody Tema tema ){ //deposis do @RequestBody o Tema e da CLASS model e o "tema", e` o nome que dei ao OBJETO!
+	@PostMapping
+	public ResponseEntity<Tema> post (@RequestBody Tema tema){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
+	}
+
+/*public ResponseEntity<Tema> post (@RequestBody Tema tema ){ //deposis do @RequestBody o Tema e da CLASS model e o "tema", e` o nome que dei ao OBJETO!
 	 return ResponseEntity.status(HttpStatus.CREATED)
 			 .body(repository.save(tema));  // Devolvendo um ResponseEntity!  //
 	
-	
-	
-	
-}
+}*/
 
-@PostMapping
+	
+@PutMapping
 public ResponseEntity<Tema> put (@RequestBody Tema tema ){ //deposis do @RequestBody o Tema e da CLASS model e o "tema", e` o nome que dei ao OBJETO!
 	 return ResponseEntity.ok(repository.save(tema));  // Devolvendo um ResponseEntity!  //
 	

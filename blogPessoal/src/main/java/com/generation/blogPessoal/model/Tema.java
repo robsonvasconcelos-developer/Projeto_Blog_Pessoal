@@ -12,9 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 @Entity     					//Escolhido a Primeira opcao de Biblioteca do JAVAX!!!
 @Table(name = "tb_tema")      //Anotacao, para Criar a Tabela e dar uma Nome para a mesma! Biblioteca JAVAX tambem!
