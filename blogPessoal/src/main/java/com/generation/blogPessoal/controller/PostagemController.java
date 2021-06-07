@@ -32,7 +32,7 @@ import com.generation.blogPessoal.repository.PostagemRepository;
 
 @RestController              //Essa ANOTACAO informa o SPRING, que se trata de uma CLASS controler!!
 @RequestMapping("/postagens")         // Por qual RI essa CLASS sera acessada!! no () define com qual PARAMETRO sera Acessada a RI!!!
-@CrossOrigin("*")       // para ser acessado de um API de Front End, EX: Angular!!! //("*") = serve para aceitar API de qualquer ORIGEM!!
+@CrossOrigin(origins = "*", allowedHeaders = "*")      // para ser acessado de um API de Front End, EX: Angular!!! //("*") = serve para aceitar API de qualquer ORIGEM!!
 public class PostagemController {
 	
 	
@@ -40,7 +40,7 @@ public class PostagemController {
 @Autowired	      /* como A "PostagemRepository" e uma INTERFACE, quem ira INSTANCIAR sera o @Autowired
 Todos os servicos do Postagem sera feito no Controller!!Para ser possivel isar o servico todo da Interface	*/
 
-//Colocando a CLASS do Repository dentro do Controler=
+//Colocando a INTERFACE do Repository dentro do Controler=
 	private PostagemRepository repository; //Chamei o PostagemRepository e IMPORTEI e o "Repository" eo nome que Inventei!!
 	
 
