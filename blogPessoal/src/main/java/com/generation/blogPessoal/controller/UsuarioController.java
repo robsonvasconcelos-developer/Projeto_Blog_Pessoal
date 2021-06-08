@@ -25,7 +25,6 @@ import com.generation.blogPessoal.service.UsuarioService;
 
 /*
 import generation.org.blogPessoal.model.Usuario; x
-import generation.org.blogPessoal.model.UsuarioLogin; x  verificar se e UsuarioLogin ou UYserlogin
 import generation.org.blogPessoal.repository.UsuarioRepository; x
 import generation.org.blogPessoal.service.UsuarioService; x
 */
