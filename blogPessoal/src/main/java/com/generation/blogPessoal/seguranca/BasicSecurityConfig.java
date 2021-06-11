@@ -20,12 +20,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+	private @Autowired UserDetailsServiceImpl service;
 
+	//ANOTACAO de DEPLOY para autenticar usuario "admin", sem precisar de cadastro=
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+auth.inMemoryAuthentication()
+.withUser("admin").password(passwordEncoder().encode("admin")).authorities("ROLE_ADMIN");
+
+auth.userDetailsService(service);
 	}
 
 	@Bean
