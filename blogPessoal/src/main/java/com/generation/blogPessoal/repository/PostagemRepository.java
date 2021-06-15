@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.generation.blogPessoal.model.Postagem;
 
-// feito Extends para herdar, de um Repositorio de um FRAMEWORK do JPA
+//  feito Extends para herdar, de um Repositorio de um FRAMEWORK do JPA
 
 @Repository  // Anotacao , indicando que se trata de um Repository que e de outra classe!!
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
